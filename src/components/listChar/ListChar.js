@@ -34,10 +34,6 @@ class ListChar extends Component {
             .catch(this.onError);
     }
 
-    onExtraCharacter = (id) => {
-        console.log("id: " + id);
-    };
-
     renderItems(arr) {
 
         const items = arr.map((arr) => {
@@ -49,9 +45,9 @@ class ListChar extends Component {
             }
 
             return (
-                <li className="char__item" key={arr.id}>
+                <li className="char__item" key={arr.id} onClick={() => this.props.onCharSelected(arr.id)}>
                     <img src={arr.thumbnail} alt={arr.name} style={imgStyle}/>
-                    <div className="char__name" onClick={() => this.onExtraCharacter(arr.id)}>{arr.name}</div>
+                    <div className="char__name">{arr.name}</div>
                 </li>
             );
         });
